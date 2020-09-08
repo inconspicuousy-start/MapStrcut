@@ -28,7 +28,7 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- mapstruct核心依赖, 包含必须的注释 -->
+            <!-- mapstruct核心依赖, 包含必须的注解类 -->
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
