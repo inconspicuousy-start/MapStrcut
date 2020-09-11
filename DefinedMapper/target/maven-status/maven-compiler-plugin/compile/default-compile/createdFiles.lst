@@ -1,0 +1,15 @@
+com\inconspicuousy\mapstruct\definedmapper\model\BuildPerson$1.class
+com\inconspicuousy\mapstruct\definedmapper\model\Person.class
+com\inconspicuousy\mapstruct\definedmapper\mapper\MapperConvert.class
+com\inconspicuousy\mapstruct\definedmapper\model\BuildPerson.class
+com\inconspicuousy\mapstruct\definedmapper\dto\BuildPersonDto$1.class
+com\inconspicuousy\mapstruct\definedmapper\dto\BuildPersonDto.class
+com\inconspicuousy\mapstruct\definedmapper\mapper\BuildMapperConvert.class
+com\inconspicuousy\mapstruct\definedmapper\dto\CarDto.class
+com\inconspicuousy\mapstruct\definedmapper\mapper\BuildMapperConvertImpl.class
+com\inconspicuousy\mapstruct\definedmapper\dto\PersonDto.class
+com\inconspicuousy\mapstruct\definedmapper\model\BuildPerson$BuildPersonBuilder.class
+com\inconspicuousy\mapstruct\definedmapper\dto\BuildPersonDto$BuildPersonDtoBuilder.class
+com\inconspicuousy\mapstruct\definedmapper\model\Car.class
+com\inconspicuousy\mapstruct\definedmapper\mapper\MapperConvertImpl.class
+com\inconspicuousy\mapstruct\definedmapper\dto\PersonCarDto.class

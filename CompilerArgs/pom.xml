@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mapstruct</artifactId>
+        <groupId>com.inconspicuousy.mapstrcut</groupId>
+        <version>1.0.snapshot</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>compiler-args</artifactId>
+    <packaging>jar</packaging>
+    <description>mapstruct 编译参数配置</description>
+
+    <dependencies>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- mapstruct核心依赖, 包含必须的注解类 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- 因为要涉及到编译参数配置, 所以必须重写父模块的编译插件 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+
+                    </annotationProcessorPaths>
+
+                    <!--  编译参数配置  -->
+                    <compilerArgs>
+                        <!-- 忽略在编译器生成的 MapperImpl 映射实体工具类(简称映射器)中的时间戳 -->
+                        <compilerArg>-Amapstruct.suppressGeneratorTimestamp=true</compilerArg>
+                        <!-- 忽略映射器中有关mapstruct的版本信息 -->
+                        <compilerArg>-Amapstruct.suppressGeneratorVersionInfoComment=true</compilerArg>
+                        <!-- 定义映射器组件模型 -->
+                        <!-- default: 默认采用Mappers工厂类获取到映射器 -->
+                        <!-- cdi: JDK原生依赖注入, 采用@Inject注解引入 -->
+                        <!-- spring: 生成的映射器是Spring单例bean, bean自带Component注解, 采用@Autowired注解引入 -->
+                        <!-- jsr330: 生成的映射器带有{@code @Named}注解, 并且可以通过@Inject进行检索 -->
+                        <compilerArg>-Amapstruct.defaultComponentModel=spring</compilerArg>
+                        <!-- 定义转换后的目标对象属性未被映射时的处理策略 -->
+                        <!-- WARN: 告警 -->
+                        <!-- ERROR: 生成失败 -->
+                        <!-- INGORE: 忽略 -->
+                        <compilerArg>-Amapstruct.unmappedTargetPolicy=ERROR</compilerArg>
+                    </compilerArgs>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
