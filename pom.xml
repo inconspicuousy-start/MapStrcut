@@ -10,6 +10,7 @@
         <module>Start</module>
         <module>CompilerArgs</module>
         <module>DefinedMapper</module>
+        <module>PerformanceComparison</module>
     </modules>
     <properties>
         <!-- 设置项目源代码的编码方式 -->
@@ -56,7 +57,6 @@
 
 
             <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
-            <!-- 因为Spring实现了CDI(上下文容器依赖注入规范),所以引入Spring后解决CDI依赖缺失的问题 -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
@@ -73,6 +73,13 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${org.springframework.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.4</version>
             </dependency>
 
         </dependencies>
